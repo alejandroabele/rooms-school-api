@@ -48,7 +48,6 @@
 config/custom.js
 config/local.js
 config/datastores.js
-config/env/production.js
 
 
 ################################################

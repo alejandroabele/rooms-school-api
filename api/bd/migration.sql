@@ -17,7 +17,7 @@ CREATE TABLE student (
     updatedAt DATETIME NULL,
     roomId INT NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `fk_room` FOREIGN KEY (`roomId`) REFERENCES `roomdb`.`room` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT `fk_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE user (
