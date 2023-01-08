@@ -1,26 +1,96 @@
 # rooms-school-api
 
-a [Sails v1](https://sailsjs.com) application
+## API Room School to manage rooms and students
+
+## About Code
+
+The app is made from scratch. The technological stack is full Javascript with the ORM [SailsJS](https://sailsjs.com)
+
+The project uses the following fundamental dependencies (libraries) for the solution:
+
+* [**N**ode.js](https://nodejs.org): runtime environment
+* [Sails.js](https://sailsjs.com): ORM backend framework
 
 
-### Links
+### Prerequisites
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+1. Install [Node.js](https://nodejs.org)
+
+### Installing dependencies (libraries)
+
+First, enter the base folder of the project directory:
+
+```sh
+$ cd rooms-school-api
+```
+Second, install dependencies
+
+```sh
+$ npm install
+```
+
+### Creating a MySQL database
+
+A database should be created with mysql, the tables involved can be found api/bd/migration.sql
+
+```sh
+CREATE TABLE room (
+    id INT NOT NULL AUTO_INCREMENT,
+    level INT NOT NULL,
+    division VARCHAR(1) NULL,
+    createdAt DATETIME NULL,
+    updatedAt DATETIME NULL,
+    PRIMARY KEY (`id`)
+);
+
+CREATE TABLE student (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NULL,
+    lastname VARCHAR(255) NULL,
+    gender VARCHAR(255) NULL,
+    birthDate DATETIME NULL,
+    createdAt DATETIME NULL,
+    updatedAt DATETIME NULL,
+    roomId INT NOT NULL,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE user (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NULL,
+    createdAt DATETIME NULL,
+    updatedAt DATETIME NULL,
+    PRIMARY KEY (`id`)
+);
+```
+
+### Configuring development properties
+
+Environment variables are in files config/custom.js y config/datastores.js.
+
+In these files you can configure:
+* Jwt secret
+* Conexión MySQL
+
+###### URI_MYSQL
+
+Within the config/datastores.js file you should place the connection in string format to your mysql database.
+
+url: 'mysql://user:password@host:port/database',yyvDnJg4wOC9rbfrPV
+
+###### JWT_SECRET
+Inside the config/custom.js file you should place the JWT secret key.
+
+JWT_SECRET: 'MY_SECRET',
 
 
-### Version info
+url: 'mysql://user:password@host:port/database'
 
-This app was originally generated on Mon Jan 02 2023 16:13:58 GMT-0300 (hora estándar de Argentina) using Sails v1.4.2.
+### Configuring production properties
 
-<!-- Internally, Sails used [`sails-generate@2.0.3`](https://github.com/balderdashy/sails-generate/tree/v2.0.3/lib/core-generators/new). -->
+Within the config/env/production.js file, you must place the necessary properties to deploy the application.
 
-
-
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
-
+Currently the application is deployed in [Render](https://render.com/) and the database in [Clever CLoud](https://www.clever-cloud.com/)
