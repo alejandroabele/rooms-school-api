@@ -86,15 +86,13 @@ In these files you can configure:
 
 Within the config/datastores.js file you should place the connection in string format to your mysql database.
 
-url: 'mysql://user:password@host:port/database',yyvDnJg4wOC9rbfrPV
+url: 'mysql://user:password@host:port/database'
 
 ###### JWT_SECRET
 Inside the config/custom.js file you should place the JWT secret key.
 
 JWT_SECRET: 'MY_SECRET',
 
-
-url: 'mysql://user:password@host:port/database'
 
 ### Configuring production properties
 
