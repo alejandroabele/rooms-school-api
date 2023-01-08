@@ -108,4 +108,6 @@ To access the routes you must send the authentication token in the headers.
 
 { authentication: 'Bearer ${token}' }
 
+#### Config
 
+To configure the project you can follow this guide https://sailsjs.com/documentation/reference/configuration/sails-config
