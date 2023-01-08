@@ -28,6 +28,13 @@ Second, install dependencies
 ```sh
 $ npm install
 ```
+Run project
+
+```sh
+$ sails lift
+```
+
+
 
 ### Creating a MySQL database
 
