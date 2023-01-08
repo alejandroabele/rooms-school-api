@@ -94,3 +94,18 @@ url: 'mysql://user:password@host:port/database'
 Within the config/env/production.js file, you must place the necessary properties to deploy the application.
 
 Currently the application is deployed in [Render](https://render.com/) and the database in [Clever CLoud](https://www.clever-cloud.com/)
+
+### Notes
+
+#### Roles
+
+The available roles are admin and user.
+The admin role will allow you to create, edit and delete records. the user role will only allow you to find records
+
+#### Protected routes
+
+To access the routes you must send the authentication token in the headers.
+
+{ authentication: 'Bearer ${token}' }
+
+
