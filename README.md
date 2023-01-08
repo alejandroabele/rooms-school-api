@@ -84,12 +84,36 @@ In these files you can configure:
 
 ###### URI_MYSQL
 
-Within the config/datastores.js file you should place the connection in string format to your mysql database.
+Within the config/datastores.js file you should place the connection in string format to your mysql database. create file in this path with the following format
+
+
+
+```ssh
+
+module.exports.datastores = {
+
+  default: {
+    adapter: 'sails-mysql',
+    url: 'mysql://user:password@host:port/database'
+  },
+};
+
+```
+add uri connection
 
 url: 'mysql://user:password@host:port/database'
 
+
 ###### JWT_SECRET
-Inside the config/custom.js file you should place the JWT secret key.
+Inside the config/custom.js file you should place the JWT secret key.  create file in this path with the following format
+
+```ssh
+
+module.exports.custom = {
+  JWT_SECRET: 'MY_SECRET',
+};
+```
+add key
 
 JWT_SECRET: 'MY_SECRET',
 
